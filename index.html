@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Nulyfe Coffee Co.</title>
+        <meta name="title" content="Nulyfe Coffee Co.">
+        <meta name="description" content="This is a cafe' website made by John3:16">
+      
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="/favicon_io/favicon-32x32.png" type="image/svg+xml">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.win.css">
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="./css/styles.css">
+
+        <!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+  
+  /*========== Colors ==========*/
+  --first-color: hsl(187, 98%, 41%);
+  --first-color-alt: hsl(216, 68%, 30%);
+  --black-color: hsl(206, 12%, 12%);
+  --card-color: hsl(0, 0%, 90%);
+  --title-color: hsl(206, 12%, 12%);
+  --text-color: hsl(206, 4%, 42%);
+  --text-color-light: hsl(206, 4%, 75%);
+  --body-color: hsl(206, 4%, 97%);
+  --container-color: #fff;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Lato', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --biggest-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+h1, h2, h3, p {
+  line-height: 140%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1024px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding: 4.5rem 0 2rem;
+}
+
+.section__title {
+  position: relative;
+  font-size: var(--h1-font-size);
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.section__title::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 3px;
+  height: 20px;
+  background-color: var(--first-color);
+}
+
+/*=============== HEADER & NAV ===============*/
+.header{
+  width: 100%;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+}
+
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo,
+.nav__toggle{
+  color: #fff;
+}
+
+.nav__logo{
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  font-weight: var(--font-bold);
+}
+
+.nav__logo-img{
+  width: .75rem;
+}
+
+.nav__toggle{
+  display: inline-flex;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px){
+  .nav__menu{
+    position: fixed;
+    background-color: var(--black-color);
+    top: 0;
+    right: -80%;
+    width: 100%;
+    height: 100%;
+    transition: .3s;
+  }
+}
+
+.nav__list{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 3rem;
+  padding-top: 9rem
+}
+
+.nav__link{
+  text-transform: uppercase;
+  color: var(--text-color-light);
+  font-size: var(--h2-font-size);
+  transition: .3s;
+}
+
+.nav__link:hover{
+  color:#fff
+}
+
+.nav__item{
+  color: #a5a4a4;
+}
+
+.nav__close{
+  font-size: 2rem;
+  color: #fff;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+
+/* Show menu */
+.show-menu{
+  right: 0;
+}
+
+/* Change background header */
+.scroll-header{
+  background-color: var(--body-color);
+  box-shadow: 0 1px 4px hsla(0, 4%, 15%, .1);
+}
+
+.scroll-header .nav__logo,
+.scroll-header .nav__toggle{
+  color:var(--title-color)
+}
+
+.scroll-header .nav__logo-img{
+mix-blend-mode: difference;
+}
+
+
+/* Active link */
+.active-link{
+  color: #fff;
+}
+
+/*=============== HOME ===============*/
+.home{
+  gap: 0;
+}
+
+.home__container{
+  padding: 7rem 0 2.5rem;
+  background: linear-gradient(
+    160deg,
+    hsla(206, 5%, 24%, 1) -4%,
+    hsla(206, 12%, 12%, 1) 46%);
+}
+
+.home__content{
+  position: relative;
+}
+
+.home__title,
+.home__data-title{
+  color: #fff;
+}
+
+.home__title{
+  font-size: var(--biggest-font-size);
+  margin-bottom: 1.5rem;
+}
+
+.home-title span{
+  color: var(--first-color);
+}
+
+.home__description{
+  margin-bottom: 2rem;
+}
+
+.home__data{
+  border-top: 1px solid var(--text-color);
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.5rem;
+}
+
+.home__data-number{
+  color: var(--first-color);
+  font-size: var(--h1-font-size);
+  margin-bottom: 1.5rem;
+}
+
+.home__data-title{
+  font-size: var(--h3-font-size);
+  margin-bottom: 1.5rem;
+}
+
+.home__scroll{
+  position: absolute;
+  width: 100px;
+  bottom: -7rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  animation: scroll 3s infinite;
+}
+
+/* Scroll image animate */
+@keyframes scroll{
+  0%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-.5rem);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+/*=============== BUTTON ===============*/
+.button{
+  display: inline-block;
+  background-color: var(--black-color);
+  color: #fff;
+  padding: 1rem 1.75rem;
+  border-radius: .25rem;
+  font-size: var(--normal-font-size);
+  text-transform: uppercase;
+}
+
+
+/*=============== SPECIALTY ===============*/
+.specialty__button{
+  margin-left: 1.25rem;
+}
+
+.specialty__category{
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 200px;
+  justify-content: center;
+  row-gap: 2.5rem;
+}
+
+.specialty__img{
+  width: 60px;
+  margin-bottom: 1rem;
+  transition: .4s;
+}
+
+.specialty__group{
+  text-align: center;
+}
+
+.specialty__title{
+  font-size: var(--h2-font-size);
+  margin-bottom: .25rem;
+}
+
+.specialty__group:hover .specialty__img{
+  transform: translateY(-.25rem);
+}
+/*=============== PRODUCTS ===============*/
+.products__filters{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.product__line{
+  position: relative;
+}
+
+.product__line::before{
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 40px;
+  background-color: var(--text-color-light);
+  right: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.product__item{
+  cursor: pointer;
+}
+
+.products__title{
+  font-size: var(--h3-font-size);
+  color: var(--text-color);
+  margin-bottom: .5rem;
+}
+
+.products__stock{
+  font-size: var(--small-font-size);
+}
+
+.products__content{
+  grid-template-columns: 200px;
+  justify-content: center;
+}
+
+.products__card{
+  background-color: var(--container-color);
+  border-radius: .5rem;
+}
+
+.products__img{
+  width: 150px;
+  transition: .4s;
+}
+
+.products__shape{
+  background-color: var(--card-color);
+  border-radius: .5rem .5rem 0 0;
+  text-align: center;
+  padding: .25rem 0;
+}
+
+.products__data{
+  padding: 1rem 0 1.25rem 1rem;
+  position: relative;
+}
+
+.products__price{
+  font-size: var(--h2-font-size);
+}
+
+.products__name{
+  font-size: var(--normal-font-size);
+}
+
+.products__button{
+  border-radius: 50%;
+  padding: .625rem;
+  display: inline-flex;
+  font-size: 1.25rem;
+  position: absolute;
+  right: 1rem;
+  top: -1.25rem;
+  box-shadow: 0 4px 12px hsla(206, 4%, 4%, .2);
+}
+
+.products__card:hover .products__img{
+  transform: translateY(-.25rem);
+}
+/* Active link products */
+.active-product .products__title{
+  color: var(--title-color);
+}
+
+.specialty__button{
+  margin-left: 1.25rem;
+}
+
+.specialty__category{
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 200px;
+  justify-content: center;
+  row-gap: 2.5rem;
+}
+
+.specialty__img{
+  width: 60px;
+  margin-bottom: 1rem;
+  transition: .4s;
+}
+
+.specialty__group{
+  text-align: center;
+}
+
+.specialty__title{
+  font-size: var(--h2-font-size);
+  margin-bottom: .25rem;
+}
+
+.specialty__group:hover .specialty__img{
+  transform: translateY(-.25rem);
+}
+/*=============== LOGOS ===============*/
+.logo{
+  background-color: #fff;
+}
+
+.logo__container{
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 2.5rem 2rem;
+  border-top: 1px solid var(--text-color-light);
+  padding-top: 2.5rem;
+}
+
+.logo__img{
+  width: 80px;
+  mix-blend-mode:normal;
+  opacity: .4;
+  transition: .4s;
+}
+
+.logo__img:hover{
+  opacity: .8;
+}
+/*=============== BLOG ===============*/
+.blog__container{
+  padding-bottom: 2rem;
+}
+
+.blog__content{
+  row-gap: 3rem;
+}
+
+.blog__image{
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.blog__img{
+  border-radius: .5rem;
+}
+
+.blog__button{
+  display: inline-flex;
+  background-color: #fff;
+  padding: 1.15rem;
+  border-radius: .5rem 0 .5rem 0;
+  font-size: 2rem;
+  color: var(--title-color);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.blog__button i{
+  transform: rotate(-30deg);
+  transition: .4s;
+}
+
+.blog__button:hover i{
+  transform: rotate(-30deg) translateX(.25rem);
+}
+
+.blog__title{
+  font-size: var(--h2-font-size);
+  margin-bottom: .75rem;
+}
+
+.blog__description{
+  margin-bottom: 1.5rem;
+}
+
+.blog__footer,
+.blog__reaction{
+ display: flex;
+ align-items: center;
+}
+
+.blog__footer{
+  column-gap: 1.5rem;
+}
+
+.blog__reaction{
+  column-gap: .25rem;
+}
+
+.blog__reaction i{
+  font-size: 1.25rem;
+}
+
+.blog__reaction span{
+  font-size:var(--small-font-size);
+}
+/*=============== FOOTER ===============*/
+.footer{
+  background-color: var(--black-color);
+  padding: 4rem 0 2.5rem;
+}
+
+.footer__title{
+  color: #fff;
+  font-size: var(--h1-font-size);
+  margin-bottom: 2rem;
+}
+
+.footer__description{
+  margin-bottom: .75rem;
+}
+
+  .footer__newsletter{
+  display: flex;
+  column-gap: .5rem;
+}
+
+.footer__input{
+  border: none;
+  outline: none;
+  padding: 1.25rem 1rem;
+  border-radius: .25rem;
+  width: 70%;
+  color: var(--text-color);
+}
+
+.footer__button{
+  padding: .75rem;
+  font-size: 2rem;
+  border-radius: .25rem;
+  display: inline-flex;
+  background-color: var(--first-color);
+}
+
+.footer__button i{
+  transform:rotate(-30deg);
+  transition: .4s;
+}
+
+.footer__button:hover i{
+  transform: rotate(-30deg) translate(.25rem);
+}
+
+.footer__content{
+  row-gap: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--text-color);
+}
+
+.footer__subtitle{
+  color: #fff;
+  font-size: var(--h2-font-size);
+  margin-bottom: .75rem;
+}
+
+.footer_flag{
+  width: 1rem;
+}
+
+.footer__group{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.footer__social{
+  display: flex;
+  justify-content: center;
+  column-gap: 1.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.footer__lmsocial-link{
+  display: flex;
+  justify-content: center;
+  column-gap: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer__lmsocial-link{
+  color: #fff;
+  transition: .4s;
+}
+
+.footer__lmsocial-link:hover{
+  color: var(--first-color);
+}
+
+.footer__social-link{
+  color: var(--first-color);
+  transition: .4s;
+}
+
+.footer__social-link{
+  color: var(--first-color);
+  transition: .4s;
+}
+
+.footer__social-link:hover{
+  color: #fff;
+}
+
+.footer__copy{
+  font-size: var(--smaller-font-size);
+}
+
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar{
+  width: .6rem;
+  background-color: hsl(206, 4%, 80%);
+}
+::-webkit-scrollbar-thumb{
+  background-color: hsl(206, 4%, 64%);
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(206, 4%, 48%);
+}
+/*=============== SCROLL UP ===============*/
+.scrollup{
+  position: fixed;
+  right: 1rem;
+  bottom: -30%;
+  background-color: #fff;
+  box-shadow: 0 4px 12px hsla(206, 4%, 20%, .1);
+  display: inline-flex;
+  padding: .35rem;
+  border-radius: .15rem;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  z-index: var(--z-tooltip);
+  opacity: .9;
+  transition: .4s;
+}
+
+.scrollup:hover{
+  transform: translateY(.25rem);
+  opacity: 1;
+}
+
+/* Show Scroll Up*/
+.show-scroll{
+ bottom: 3rem; 
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px) {
+  .container{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .quality__img-small{
+    transform: translateX(-6rem);
+  }
+  .quality__buttons{
+    flex-direction: column;
+    row-gap: 1rem;
+    color: #fff;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 575px) {
+  .specialty__category{
+    grid-template-columns: repeat(2, 200px);
+    column-gap: 3rem;
+  }
+
+  .products__content{
+    grid-template-columns: repeat(2, 200px);
+    padding-bottom: 3rem;
+  }
+
+  .blog__content{
+    grid-template-columns: 450px;
+    justify-content: center;
+  }
+
+  .footer__newsletter{
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 767px){
+  .section{
+    padding: 7rem 0 2rem;
+  }
+
+  .nav{
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .nav__toggle,
+  .nav__close{
+    display: none;
+  }
+
+  .nav__list{
+    padding-top: 0;
+    flex-direction: row;
+    column-gap: 4rem;
+  }
+  .nav__link{
+    position: relative;
+    font-size: var(--normal-font-size);
+    text-transform: initial;
+  }
+
+  .nav__link::after{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 12px;
+    background-color: var(--text-color-light);
+    transform: translateX(1.25rem);
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+   }
+
+   .scroll-header .nav__link{
+    color: var(--text-color);
+   }
+   .scroll-header .active-link{
+    color: var(--title-color);
+   }
+   .scroll-header .active-link::after{
+    background-color: var(--title-color);
+   }
+
+   .home{
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    position: relative;
+   }
+   .home__content{
+    position: initial;
+   }
+   .home__scroll{
+    bottom: 0;
+    top: 0;
+    margin: auto;
+   }
+
+   .products__filters{
+    grid-template-columns: repeat(3, 200px);
+   }
+
+   .quality__content,
+   .footer__content{
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+   }
+}
+/* For large devices */
+@media screen and (min-width:1040px){
+  .container{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home__content{
+    max-width: 400px;
+    margin-right: 7rem;
+    margin-left: auto;
+  }
+
+  .section__title{
+    padding-right: 15rem;
+    padding-left: 1.75rem;
+  }
+  .section__title::before{
+    height: 28px;
+    width: 4px;
+    top: 12px;
+  }
+
+  .specialty__box{
+    display: grid;
+    grid-template-columns: 2fr .5fr;
+  }
+  .specialty__group{
+    text-align: initial;
+  }
+  .specialty__category{
+    grid-template-columns: repeat(3, 250px);
+    column-gap: 8rem;
+  }
+  .specialty__line{
+    position: relative;
+  }
+  .specialty__line::before{
+    content: '';
+    width: 1px;
+    height: 120px;
+    background-color: var(--text-color-light);
+    position: absolute;
+    right: -5rem;
+    top: 0;
+    margin: auto 0;
+  }
+  .specialty__img{
+    width: 80px;
+    margin-bottom: 1.5rem;
+  }
+
+  .products__filters{
+    margin: 4rem 0 5.5rem;
+    column-gap: 4rem;
+  }
+  .products__content{
+    grid-template-columns: repeat(3, 262px);
+    justify-content: initial;
+    column-gap: 5rem;
+  }
+  .products__card{
+    border-radius: .75rem;
+  }
+  .products__img{
+    width: 200px;
+  }
+  .products__shape{
+    padding: 2rem 0;
+    border-radius: .75rem .75rem 0 0;
+  }
+  .products__data{
+    padding: 1rem 0 1.5rem 1.5rem;
+  }
+  .products__name{
+    font-size: var(--h3-font-size);
+  }
+  .products__button{
+    font-size: 1.5rem;
+    padding: .75rem;
+    right: 1.5rem;
+    top: -1.5rem;
+  }
+
+  .quality__content{
+    column-gap: 6rem;
+  }
+  .quality__images{
+    margin-top: 2rem;
+  }
+  .quality__img-big{
+    width: 428px;
+  }
+  .quality__img-small{
+    width: 153px;
+    transform: translateX(-7rem);
+  }
+  .quality__title{
+    margin-bottom: 1rem;
+  }
+  .quality__special{
+    margin-bottom: 1rem;
+  }
+
+  .logo__container{
+    grid-template-columns: repeat(5, 1fr);
+    padding: 3.5rem 0;
+  }
+  .logo__img{
+    width: 110px;
+  }
+
+  .blog__container{
+    padding-bottom: 5rem;
+  }
+  .blog__content{
+    grid-template-columns: repeat(2, 450px);
+    column-gap: 5rem;
+    padding-top: 2rem;
+  }
+
+  .footer__content{
+    grid-template-columns: repeat(4, max-content);
+    column-gap: 4rem;
+    padding-bottom: 5.5rem;
+  }
+  .footer__group{
+    margin-top: 3rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer__title{
+    font-size: var(--h2-font-size);
+  }
+  .footer__social{
+    column-gap: 2rem;
+  }
+  .footer__social-link{
+    font-size: 1.5rem;
+  }
+
+  .footer__lmsocial-link{
+    font-size: 1rem;
+  }
+
+  .scrollup{
+    right: 3rem;
+  }
+}
+
+@media screen and (min-width:1200px){
+  .home__container{
+    padding-top: 10rem;
+  }
+  .home__data{
+    padding-top: 3rem;
+  }
+  .home__title{
+    margin-bottom: 2rem;
+  }
+  .home__description{
+    margin-bottom: 3rem;
+  }
+  .home__scroll{
+    width: 130px;
+  }
+}
+
+/* Alternative code, for larger screens */
+@media screen and (min-width:1700px){
+  .home{
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*=============== LOAD ===============*/
+.load{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0, 0%, 90%);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+/* The size may vary depending 
+on the image of the gif */
+.load__gif{
+  width: 210px;
+}
+
+</style>
+    <body>
+        <!--==================== LOADER ====================-->
+        <div class="div load" id="load">
+            <img src="./img/apple-touch-icon.png" alt="" class="load__gif"> Nulyfe Coffee Co.
+        </div>
+
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#home" class="nav__logo">
+                    <img src="./img/favicon-32x32.png" alt="Nulyfe Coffee Co logo" class="nav__logo"> Nulyfe Coffee Co.
+                </a>
+
+                <div class="nav__menu" id="nav-menu"> 
+                    <ul class="nav__list">
+                        
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">About Us</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#menu" class="nav__link">Menu</a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="#blog" class="nav__link">Blog</a>
+                        </li>
+
+                        <li class="nav__item" class="footer__social-link">
+                            <a href="#https://wa.me/message/MH5PLCDIHB7MC1" class="nav__link" ><i class="bx bxl-whatsapp"></i></a>
+                        </li>
+
+                        <li class="nav__item" class="footer__social-link">
+                            <a href="https://www.facebook.com/nulyfecoffee?mibextid=ZbWKwL" class="nav__link" ><i class="bx bxl-facebook"></i></a>
+                        </li>
+
+                        <li class="nav__item" class="footer__social-link">
+                            <a href="https://www.instagram.com/nulyfe_coffee?igsh=MWR4M3RudmozdDBiZA==" class="nav__link" ><i class="bx bxl-instagram"></i></a>
+                        </li>
+                    </ul>
+
+                    <div class="nav__close" id="nav-close">
+                        <i class='bx bx-x'></i>
+                    </div>
+                </div>
+
+                <!-- Toggle button -->
+                 <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-grid-alt' ></i>
+                 </div>
+            </nav>
+        </header>
+
+        <!--==================== MAIN ====================-->
+        <main>
+            <!--==================== HOME ====================-->
+            <section class="home grid" id="home">
+                <div class="home__container">
+                    <div class="home__content container">
+                        <h1 class="home__title">
+                            It's Nulyfe Coffee. <br>
+                            Coffee to remember<span>! </span>
+                        </h1>
+                        <p class="home__description">
+                            Buy the best and delicious coffees.
+                        </p>
+
+                        <div class="home__data">
+                            <div class="home__data-group">
+                                <h2 class="home__data-number">350+</h2>
+                                <h3 class="home__data-title">Certificates Issued</h3>
+                                <p class="home__data-description">
+                                    As you finish your course, you leave with both skills and a certificate that
+                                    is recognized by the barista coffee board of South Africa.
+                                </p>
+                            </div>
+
+                            <div class="home__data-group">
+                                <h2 class="home__data-number">150+</h2>
+                                <h3 class="home__data-title">Testimonials</h3>
+                                <p class="home__data-description">
+                                    Testimonials from various customers who have tried our products and services and
+                                    trust us.
+                            </div>
+                        </div>
+
+                        <a href="#specialty">
+                            <img src="./img/scroll.png" alt="home__scroll" class="home__scroll">
+                        </a>
+                    </div>
+                </div>
+
+                <img src="./img/IMG_08231.png" alt="home__img">
+            </section>
+
+              <!--==================== ESPECIALTY ====================-->
+              <div class="specialty section container" id="specialty">
+                <div class="specialty__container">
+                    <div class="specialty__box">
+                        <h2 class="section__title">
+                            Specialty coffees that make you happy and cheer you up!
+                        </h2>
+                    </div>
+
+                    <div class="specialty__category">
+                        <div class="specialty__group specialty__line">
+                            <img src="./img/specialty1.png" alt="" class="specialty__img">
+
+                            <h3 class="specialty__title">Selected Coffee</h3>
+                            <p class="specialty__description">
+                                We select the best premium coffee, for a true taste.
+                            </p>
+                        </div>
+                        <div class="specialty__group specialty__line">
+                            <img src="./img/specialty2.png" alt="" class="specialty__img">
+
+                            <h3 class="specialty__title">Delicious Cookies</h3>
+                            <p class="specialty__description">
+                                Enjoy your coffee with some hot cookies
+                            </p>
+                        </div>
+                        <div class="specialty__group specialty__line">
+                            <img src="./img/specialty3.png" alt="" class="specialty__img">
+
+                            <h3 class="specialty__title">Enjoy at Home</h3>
+                            <p class="specialty__description">
+                                Enjoy the best coffee in the comfort of your home.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--==================== ABOUT SECTION ====================-->
+            <section class="quality section" id="about">
+                <div class="quality__container container">
+                    <h2 class="section__title">
+                        About Us
+                    </h2>
+
+                    <div class="quality__content grid">
+                        <div class="quality__data">
+                            <h1 class="quality__title">WHERE IT ALL STARTED</h1>
+                            <p class="quality__description">
+                                Welcome to the world Nulyfe Coffee Co, where we serve  'coffee to remember' and raise the finest baristas around. <br> <br> 
+
+                                Our journey began as a thought back in 2021, its pronounced Newlife then we just twisted up the spelling to make it unique
+                                and draw young people's attention. As the new generation in the coffee industry, we have passion for spreading knowledge to the youth in order to
+                                help them get employment easily. If your resume has atleast one course it's easier to get the opportunity to work because you bring value to that company, 
+                                they wont spend time and resources on training. <br> <br> 
+                                
+                                That is why at Nulyfe Coffee we provide Barista Courses as our main service of business.
+                            </p>
+                        </div>
+                        <div class="quality__images">
+                            <img src="./img/IMG_0802.png" alt="" class="quality__img-big">
+                        </div>
+
+                
+                        <div class="quality__content grid">
+                            <div class="quality__images">
+                                <img src="./img/IMG_0722.jpg" alt="" class="quality__img-big">
+                            </div>
+                            <div class="quality__images">
+                                <img src="./img/IMG_0823.png" alt="" class="quality__img-big">
+                            </div>
+                    </div>
+                    
+                    <div class="quality__content grid">
+                        <div class="quality__images">
+                            <img src="./img/IMG_0640.jpg" alt="" class="quality__img-big">
+                        </div>
+                        <div class="quality__images">
+                            <img src="./img/gee.png" alt="" class="quality__img-big">
+                        </div>
+                </div>
+
+                    </div>
+
+                    
+                    <div class="quality__content grid">
+                        <div class="quality__images">
+                            <img src="./img/IMG_0663.jpg" alt="" class="quality__img-big">
+                        </div>
+                        <div class="quality__data">
+                            <p class="quality__description">
+                                <h2 class="quality__title">OUR BARISTA TRAINING</h2> 
+                                We offer industry-leading, rigorous training programme that consists of theoretical and practical
+                                 instructions, equipping every single student with the skills and passion to deliver
+                                 a consistent, authentic coffee experience to thousands of people every day, across Africa and beyond. <br> <br>
+                                 
+                                Our courses equip students with the tools and knowledge to thrive in a busy customer-centric environment.  <br>
+                                So whether you end up working in a small coffee shop or for a big busy restuarant, this is the course for you! <br> <br>
+                                To start your barista course <i class='bx bx-down-arrow-alt'></i> <br> <br>
+                                 </p>
+
+                                 <div class="quality__button">
+                                    <a   class="button" class="quality__button" href="https://wa.me/message/MH5PLCDIHB7MC1">
+                                        Click here!  
+                                         
+                                    </a>
+                                </div>
+                            </div>
+                </div>
+            </section>
+
+            <!--==================== MEET THE TEAM ====================-->
+            <div class="specialty section container" id="specialty">
+                            <div class="specialty__container">
+                                <div class="specialty__box">
+                                    <h2 class="section__title">
+                                        Meet the team!
+                                    </h2>
+                                </div>
+            
+                                <div class="specialty__category">
+                                    <div class="specialty__group1 specialty__line">
+                                        <img src="./img/Charles.png" alt="" class="specialty__img">
+            
+                                        <h3 class="specialty__title1">Charles Ngwarai</h3>
+                                        <p class="specialty__description">
+                                            Founder at Nulyfe Coffee Co. <br>
+                                            ompeted in the Barista Competition, winning the regional championship and placing 5th nationally.
+                                             I also judged the competition in Cape Town and worked at Bean Authentic coffee roaster.
+                                        </p>
+                                    </div>
+                                    <div class="specialty__group specialty__line">
+                                        <img src="./img/Sam.png" alt="" class="specialty__img">
+            
+                                        <h3 class="specialty__title">Samkelo Moya</h3>
+                                        <p class="specialty__description">
+                                            Operations Manager <br>
+                                            A former Meza/Baker at Vida e Caffe, grew into a senior Barista with Magnificent Barista Boys.
+                                             His passion for coffee and customer service shaped his ongoing journey in the industry.
+                                        </p>
+                                    </div>
+                                    <div class="specialty__group specialty__line">
+                                        <img src="./img/Percy.png" alt="" class="specialty__img">
+            
+                                        <h3 class="specialty__title">Percy</h3>
+                                        <p class="specialty__description">
+                                            Barista & Kitchen Chef <br>
+                                            A former student at Nulyfe Coffee Co. now working fulltime with her specialty being baking.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+
+           <!--==================== MENU ====================-->
+            <div class="specialty section container" id="menu">
+    <div class="specialty__container">
+        <div class="specialty__box">
+            <h2 class="section__title">
+                Check Our Menu
+            </h2>
+    
+            <div class="quality__button">
+                <a   class="button" class="quality__button" href="https://wa.me/message/MH5PLCDIHB7MC1">
+                    Order Here
+                    
+                </a>
+            </div>
+        </div> 
+    
+        <div class="specialty__category">
+            <div class="specialty__group specialty__line">
+                <img src="./img/cake1.png" alt="" class="specialty__img">
+    
+                <h3 class="specialty__title">COFFEE</h3>
+                <p class="specialty__description">
+                    Cortado &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;R20 <br>
+                    Flat White&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R20 <br>
+                    Latte   &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R25 <br> 
+                    Espresso &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; R15 / R20 <br> 
+                    Macchiato  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  R15 / R20 <br>
+                    Americano&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R15 / R20 <br>
+                    Cappuccino &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R20 / R25 <br>
+                    Mocha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R25 / R30 <br>
+                    Dirty Chai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R25 / R30 <br>
+                    Coffee Flavours: Vanilla, Caramel, Hazelnuts & Creme Brule&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R5 <br>
+    
+                </p>
+            </div>
+            <div class="specialty__group specialty__line">
+                <img src="./img/cake2.png" alt="" class="specialty__img">
+    
+                <h3 class="specialty__title">ICED COFFEE</h3>
+                <p class="specialty__description"> 
+                    Iced Vanilla Coffee&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;R20 <br>
+                    Iced Dirty Chai &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R20 <br>
+                    Iced Hazelnut Coffee&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;R25 <br>
+                    Iced Mocha  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R15 / R20 <br>
+                    Iced Coffee &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R15 / R20 <br> 
+                    Iced Creme Brule Coffee &nbsp;R25 / R30 <br>
+                    Iced Caramel Coffee &nbsp;R20 / R25 <br>
+                    </p>
+            </div>
+            <div class="specialty__group specialty__line">
+                <img src="./img/cake5.png" alt="" class="specialty__img">
+    
+                <h3 class="specialty__title">OTHER HOT BEVERAGES</h3>
+                <p class="specialty__description">
+                    Cyton Tea &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R15 <br>
+                    Rooibos Tea &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R15<br>
+                    Hot Chocolate &nbsp; &nbsp;&nbsp; R20 / R25 <br> 
+                    Chai Latte  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  R20 / R25 <br>
+                    Red Cappuccino &nbsp;&nbsp;R20 / R25 <br></p>
+            </div>
+            <div class="specialty__group specialty__line">
+                <img src="./img/cake3.png" alt="" class="specialty__img">
+    
+                <h3 class="specialty__title">SMOOTHIES</h3>
+                <p class="specialty__description">
+                    Tropical &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R25 <br>
+                    Banana Oats &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;R25 <br>
+                    Berry &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;R30 <br>
+                    Protein &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R30<br>
+                   </p>
+            </div>
+            <div class="specialty__group specialty__line">
+                <img src="./img/cake4.png" alt="" class="specialty__img">
+    
+                <h3 class="specialty__title">OTHER COLD BEREVAGES</h3>
+                <p class="specialty__description">
+                    Juice: Orange, Mango, Cranberry, Lemon Mint & Litchi
+                </p>
+            </div>
+    
+            <div class="specialty__group specialty__line">
+                <img src="./img/fw.png" alt="" class="specialty__img">
+    
+                <h3 class="specialty__title">CLUB SANDWHICHES</h3>
+                <p class="specialty__description">
+                    Chicken Mayo Club <br>(Chicken Mayo,Avo & Cheese) <br> <br>
+                    Normal club <br>(Egg,Cheese,Tomato & Avo)<br> <br>
+                    Macon club <br>(Macon,Chicken Mayo & Cheese)<br> <br>
+                    Bread, Croissant and Wraps
+                </p>
+            </div>
+        </div>
+    </div>
+            </div>
+        </main>
+
+            <!--==================== LOGOS ====================-->
+            <section class="logo section">
+                <div class="logo__container container grid">
+                    <img src="./img/logocoffee2.png" alt="" class="logo__img">
+                    <img src="./img/logocoffee3.png" alt="" class="logo__img">
+                    <img src="./img/logocoffee1.png" alt="" class="logo__img">
+                    <img src="./img/logocoffee4.png" alt="" class="logo__img">
+                </div>
+            </section>
+
+             <!--==================== TESTIMONIALS ====================-->
+
+             <div class="specialty section container" id="specialty">
+                <div class="specialty__container">
+                    <div class="specialty__box">
+                        <h2 class="section__title">
+                            What our customers say about us
+                        </h2>
+                    </div>
+
+                    <div class="specialty__category">
+                        <div class="specialty__group specialty__line">
+                            <img src="./img/unnamed.png" alt="" class="specialty__img">
+
+                            <h3 class="specialty__title">Bester Murazvu</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <p class="specialty__description">
+                                Got my certificate as a barista at Nulyfe Coffee Co and currently working.
+                            </p>
+                        </div>
+                        <div class="specialty__group specialty__line">
+                            <img src="./img/Untitled design (1).png" alt="" class="specialty__img">
+
+                            <h3 class="specialty__title">Irene Mataki</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <p class="specialty__description">
+                                I had a very great experience with nulyfe coffee where I was trained to 
+                                become a barista and now I am a qualified barista all thanks to Charles and Samkelo
+                            </p>
+                        </div>
+                        <div class="specialty__group specialty__line">
+                            <img src="./img/Untitled design (2).png" alt="" class="specialty__img">
+
+                            <h3 class="specialty__title">Carlo Altino</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <p class="specialty__description">
+                                Great Coffee Served by Charles, The Barista Extraordinaire Himself ☕👌.... Love it!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--==================== BLOG ====================-->
+            <section class="blog section" id="blog">
+                <div class="blog__container container">
+                    <h2 class="section__title">
+                        Our Blogs Coffee with trending topic for this week
+                    </h2>
+
+                    <div class="blog__content grid">
+                        <article class="blog__card">
+                            <div class="blog__image">
+                                <img src="./img/blog1.png" alt="" class="blog__img">
+                    
+                            </div>
+
+                            <div class="blog__data">
+                                <h2 class="blog__title">
+                                    Cafe Focus: Nulyfe Coffee
+                                </h2>
+                                <p class="blog__description">
+                                    We first met Charles many moons ago when he was working at InFood Coffee Society
+                                     in Jeffreys Bay and he came first in the SCASA Eastern Cape Barista Championships
+                                     He was even on the Cover of our 4th Edition of The Coffee Magazine some 9 years ago!
+                                      </p>
+                                      <div class="quality__button">
+                                        <a   class="button" class="quality__button" href="https://magazine.coffee/blog/1/6316/cafe-focus-nulyfe-coffee">
+                                            Read More
+                                            
+                                        </a>
+                                    </div>
+                                      
+                            </div>
+                        </article>
+                        <article class="blog__card">
+                            <div class="blog__image">
+                                <img src="./img/Untitled design.png" alt="" class="blog__img">
+                            </div>
+
+                            <div class="blog__data">
+                                <h2 class="blog__title">
+                                    Recommended by Restaurant Guru
+                                </h2>
+                                <p class="blog__description">
+                                    Good coffee is what may make you come back to Nulyfe Coffee Co.. 
+                                    The nice staff works hard, stays positive and makes this place great. 
+                                    If you want to enjoy fine service, you should go to this place... </p>
+
+                                    <div class="quality__button">
+                                        <a   class="button" class="quality__button" href="https://restaurantguru.com/Nulyfe-Coffee-Co-Cape-Town">
+                                            Read More
+                                            
+                                        </a>
+                                    </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    
+                </div>   
+            </section>
+         
+  
+        <!--==================== FOOTER ====================-->
+        <footer class="footer">
+            <div class="footer__container container">
+                <h1 class="footer__title">Nulyfe Coffee Co.</h1>
+
+            <form   action="https://formspree.io/f/xjvqbnlw" method="POST">
+                <div class="footer__content grid">
+                    <div class="footer__data">
+                        <p class="footer__description">
+                            Subscribe to our newsletter
+                        </p>
+
+                        <div class="footer__newsletter">
+                            <input type="email" placeholder="Your email addess" class="footer__input"  name="mail" required>
+                            <button value="submit" type="submit" class="footer__button">
+                                <i class="bx bx-right-arrow-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                    <div class="footer__data">
+                        <h2 class="footer__subtitle">Address</h2>
+                        <p class="footer__information">
+                            Maynard Mall,Wynberg Main Rd, <br>
+                            Cape Town, 7808
+                        </p>
+                    
+                    </div>
+
+                    <div class="footer__data">
+                        <h2 class="footer__subtitle">Contact</h2>
+                        <p class="footer__information">
+                            +27 83 741 6745 <br>nulyfecoffeeco@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="footer__data">
+                        <h2 class="footer__subtitle">Operating Hours</h2>
+                        <p class="footer__information">
+                            Mondays - Saturday <br>07:00AM - 17:00PM 
+                              
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer__group">
+                    <ul class="footer__social">
+                        <a href="#https://wa.me/message/MH5PLCDIHB7MC1" target="_blank" class="footer__social-link">
+                            <i class="bx bxl-whatsapp"></i>
+                        </a>
+                        <a href="https://www.facebook.com/nulyfecoffee?mibextid=ZbWKwL" target="_blank" class="footer__social-link">
+                            <i class="bx bxl-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nulyfe_coffee?igsh=MWR4M3RudmozdDBiZA==" target="_blank" class="footer__social-link">
+                            <i class="bx bxl-instagram"></i>
+                        </a>
+                        
+                    </ul>
+
+                    <span class="footer__copy">
+                        &#169; 2024 Nulyfe Coffee Co. All rights reserved | Crafted by <a href="#home" target="_blank" class="footer__lmsocial-link">CodewithLM</a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#home" class="scrollup" id="scroll-up">
+            <i class='bx bx-up-arrow-alt'></i>
+        </a>
+   
+        <!--=============== MIXITUP FILTER ===============-->
+        <script src="./js/mixitup.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="./js/main.js"></script>
+    </body>
+</html>
